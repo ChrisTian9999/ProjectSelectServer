@@ -80,9 +80,12 @@ public class BaseDao<T> {
             tx = session.beginTransaction();
 
             String tab = clazz.getSimpleName();
-            String hql = "update " + tab + " t";
+            String hql = "update " + tab + " t set ";
             for (int i = 0; i < names.length; i++) {
-                hql += " set t." + names[i] + "=?";
+                hql += " t." + names[i] + "=?";
+                if (i < names.length - 1) {
+                    hql += ",";
+                }
             }
             if (wheres != null && wheres.length > 0) {
                 hql += " where ";

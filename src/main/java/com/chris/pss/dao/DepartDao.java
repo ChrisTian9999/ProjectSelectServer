@@ -12,12 +12,8 @@ import java.util.List;
  */
 public class DepartDao extends BaseDao<DepartmentEntity> {
 
-    /**
-     * 根据学院的id获得一个学院基本信息
-     */
-    public DepartmentEntity findDepartById(int id) {
-        List<DepartmentEntity> list = findByHQL("from DepartmentEntity where id=? and parentId is null", id);
-        return EmptyUtils.isEmpty(list) ? null : list.get(0);
+    public boolean updateById(int id, String start, String end) {
+        return update(new String[]{"timeBegin", "timeEnd"}, new String[]{start, end}, new String[]{"id=" + id});
     }
 
     /**
