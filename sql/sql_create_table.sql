@@ -47,7 +47,8 @@ heart_beat bigint default 0,
 */
 create table project(
 id int identity(1,1) primary key,
-teacher_id int foreign key references teacher(id),
+department_id int foreign key references department(id) not null,
+teacher_id int foreign key references teacher(id) not null,
 student_id int foreign key references student(id),
 title text not null,
 detail text,
@@ -55,6 +56,8 @@ ranking int default 0 check(ranking>=0 and ranking<=5),
 is_checked int default 0,
 is_finish int default 0
 );
+
+drop table project;
 
 
 

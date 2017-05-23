@@ -30,7 +30,7 @@ public class BaseDao<T> {
     }
 
 
-    public void save(T entity) {
+    public T save(T entity) {
         Session session = null;
         Transaction tx = null;
         try {
@@ -38,6 +38,7 @@ public class BaseDao<T> {
             tx = session.beginTransaction();
             session.save(entity);
             tx.commit();
+            return entity;
         } catch (Exception ex) {
             System.out.println("保存对象出现错误！");
             ex.printStackTrace();
@@ -49,6 +50,7 @@ public class BaseDao<T> {
                 session.close();
             }
         }
+        return null;
     }
 
     public void update(T entity) {

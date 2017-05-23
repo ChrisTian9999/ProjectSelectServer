@@ -17,7 +17,8 @@ public class StudentDao extends BaseDao<StudentEntity> {
      * 根据学号拿实体
      */
     public StudentEntity findStudentBySno(String sno) {
-        List<StudentEntity> studentList = findByHQL("from StudentEntity where sno=?", sno);
+        String hql = "from StudentEntity where sno=?";
+        List<StudentEntity> studentList = findByHQL(hql, sno);
         return EmptyUtils.isEmpty(studentList) ? null : studentList.get(0);
     }
 

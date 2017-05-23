@@ -1,6 +1,7 @@
 package com.chris.pss.utils;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,5 +14,15 @@ public class SimpleUtils {
 
     public static String date2String(long time) {
         return new SimpleDateFormat(DATE_FORMATE).format(new Date(time));
+    }
+
+    public static long String2Date(String time) {
+        try {
+            if (!EmptyUtils.isEmpty(time)) {
+                return new SimpleDateFormat(DATE_FORMATE).parse(time).getTime();
+            }
+        } catch (ParseException e) {
+        }
+        return 0;
     }
 }

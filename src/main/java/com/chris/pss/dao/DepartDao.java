@@ -1,6 +1,5 @@
 package com.chris.pss.dao;
 
-import com.chris.pss.dto.DepartmentDTO;
 import com.chris.pss.entity.DepartmentEntity;
 import com.chris.pss.utils.EmptyUtils;
 
@@ -12,6 +11,9 @@ import java.util.List;
  */
 public class DepartDao extends BaseDao<DepartmentEntity> {
 
+    /**
+     * 根据id修改这个专业的起止时间
+     */
     public boolean updateById(int id, String start, String end) {
         return update(new String[]{"timeBegin", "timeEnd"}, new String[]{start, end}, new String[]{"id=" + id});
     }
@@ -24,6 +26,17 @@ public class DepartDao extends BaseDao<DepartmentEntity> {
         return EmptyUtils.isEmpty(list) ? null : list.get(0);
     }
 
+    /**
+     * 根据学院的id找所属所有的专业
+     */
+    public List<DepartmentEntity> getMajorListByParentId(int parentId) {
+        List<DepartmentEntity> list = findByHQL("from DepartmentEntity where parentId=?", parentId);
+        return list != null ? list : new ArrayList<DepartmentEntity>();
+    }
+
+    /**
+     * 获得所有的学院和专业
+     */
     public List<DepartmentEntity> getDepartList() {
         return findByHQL("from DepartmentEntity");
     }

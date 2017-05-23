@@ -25,13 +25,13 @@ public class DepartmentController {
 
     @RequestMapping("/major/{id}/modify")
     @ResponseBody
-    public BaseResponse<Map> postModify(@PathVariable("id") int id, @RequestParam("start") long start, @RequestParam("end") long end) {
-        if (start >= end) {
+    public BaseResponse<Map> postModify(@PathVariable("id") int id, @RequestParam("start") String start, @RequestParam("end") String end) {
+        long st = SimpleUtils.String2Date(start);
+        long en = SimpleUtils.String2Date(end);
+        if (st <= 0 || en <= 0 || st >= en) {
             return new BaseResponse<Map>(Const.ERROR_SERVER, Const.ERROR_SERVER_MSG, null);
         }
-        String strStart = SimpleUtils.date2String(start);
-        String strEnd = SimpleUtils.date2String(end);
-        boolean flag = new DepartDao().updateById(id, strStart, strEnd);
+        boolean flag = new DepartDao().updateById(id, start, end);
         if (!flag) {
             return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_MAJOR, null);
         }
@@ -49,6 +49,7 @@ public class DepartmentController {
         }
         return new BaseResponse<DepartmentEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_MAJOR, null);
     }
+
 
     /**
      * 获得所有的Department，系别与专业

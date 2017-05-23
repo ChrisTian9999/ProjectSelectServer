@@ -20,6 +20,20 @@ import java.util.Map;
 @RequestMapping("/student")
 public class StudentController {
 
+    @RequestMapping("/sno/{sno}")
+    @ResponseBody
+    public BaseResponse<StudentEntity> getStuBySno(@PathVariable("sno") String sno) {
+        StudentEntity student = new StudentDao().findStudentBySno(sno);
+        if (student != null) {
+            student.setPwd(null);//保护密码
+            return new BaseResponse<StudentEntity>(student);
+        }
+        return new BaseResponse<StudentEntity>(Const.ERROR_NOT_FOUND
+                , Const.ERROR_NOT_FOUND_MSG_STUDENT
+                , null);
+    }
+
+
     @RequestMapping("/login")
     @ResponseBody
     public BaseResponse<Map> login(@RequestParam("sno") String sno, @RequestParam("pwd") String pwd) {
@@ -58,19 +72,8 @@ public class StudentController {
         return new BaseResponse<StudentEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_STUDENT, null);
     }
 
-    @RequestMapping("/sno/{sno}")
-    @ResponseBody
-    public BaseResponse<StudentEntity> getStuBySno(@PathVariable("sno") String sno) {
-        StudentEntity student = new StudentDao().findStudentBySno(sno);
-        if (student != null) {
-            student.setPwd(null);//保护密码
-            return new BaseResponse<StudentEntity>(student);
-        }
-        return new BaseResponse<StudentEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_STUDENT, null);
-    }
 
-
-    @RequestMapping(value="/online/count" ,method= RequestMethod.GET)
+    @RequestMapping(value = "/online/count", method = RequestMethod.GET)
     @ResponseBody
     public BaseResponse<Map> getStuBySno(@RequestParam(value = "duration", required = false) Long duration) {
         Long dur = duration == null ? (10 * 1000) : duration;
