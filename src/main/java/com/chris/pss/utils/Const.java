@@ -26,4 +26,7 @@ public class Const {
     public static final int ERROR_SERVER = 500;
     public static final String ERROR_SERVER_MSG = "服务器错误";
 
+    public static final int ERROR_TIME_FORMAT = 405;
+    public static final String ERROR_TIME_FORMAT_MSG = "时间格式错误";
+
 }

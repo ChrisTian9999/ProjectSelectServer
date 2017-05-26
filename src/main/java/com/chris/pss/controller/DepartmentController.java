@@ -29,7 +29,7 @@ public class DepartmentController {
         long st = SimpleUtils.String2Date(start);
         long en = SimpleUtils.String2Date(end);
         if (st <= 0 || en <= 0 || st >= en) {
-            return new BaseResponse<Map>(Const.ERROR_SERVER, Const.ERROR_SERVER_MSG, null);
+            return new BaseResponse<Map>(Const.ERROR_TIME_FORMAT, Const.ERROR_TIME_FORMAT_MSG, null);
         }
         boolean flag = new DepartDao().updateById(id, start, end);
         if (!flag) {
