@@ -1,5 +1,7 @@
 package com.chris.pss.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**

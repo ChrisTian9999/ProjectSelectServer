@@ -51,11 +51,12 @@ major_id int foreign key references department(id) not null,
 teacher_id int foreign key references teacher(id) not null,
 student_id int foreign key references student(id),
 title text not null,
-detail text,
+detail text not null,
 ranking int default 0 check(ranking>=0 and ranking<=5),
 is_checked int default 0,
 is_finish int default 0
 );
+
 
 /*
 系别专业表数据
