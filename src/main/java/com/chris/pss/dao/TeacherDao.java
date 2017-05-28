@@ -13,4 +13,5 @@ public class TeacherDao extends BaseDao<TeacherEntity> {
         List<TeacherEntity> list = findByHQL("from TeacherEntity where tno=?", tno);
         return EmptyUtils.isEmpty(list) ? null : list.get(0);
     }
+    
 }

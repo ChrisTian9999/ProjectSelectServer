@@ -42,12 +42,12 @@ heart_beat bigint default 0,
 );
 
 
-/*
-审核中可修改，选题中可取消
+/*课题表
 */
 create table project(
 id int identity(1,1) primary key,
 department_id int foreign key references department(id) not null,
+major_id int foreign key references department(id) not null,
 teacher_id int foreign key references teacher(id) not null,
 student_id int foreign key references student(id),
 title text not null,
@@ -56,10 +56,6 @@ ranking int default 0 check(ranking>=0 and ranking<=5),
 is_checked int default 0,
 is_finish int default 0
 );
-
-drop table project;
-
-
 
 /*
 系别专业表数据
