@@ -53,15 +53,22 @@ public class ProjectController {
         return new BaseResponse<List<ProjectEntity>>(list);
     }
 
+    @RequestMapping("/teacher/{tno}/list")
+    @ResponseBody
+    public BaseResponse<List<ProjectEntity>> getProjectListByTno(@PathVariable("tno") String tno) {
+        List<ProjectEntity> list = new ProjectDao().getProjectListByTno(tno);
+        return new BaseResponse<List<ProjectEntity>>(list);
+    }
+
     /**
      * 获得学院所有的课题的列表
      *
      * @param isChecked 是否通过审核
      */
-    @RequestMapping("/depart/list")
+    @RequestMapping("/depart/{departId}/list")
     @ResponseBody
     public BaseResponse<List<ProjectEntity>> postCreate(
-            @RequestParam("departId") int departId
+            @PathVariable("departId") int departId
             , @RequestParam("isChecked") Boolean isChecked) {
         List<ProjectEntity> list = new ProjectDao().getByCheckState(departId, isChecked);
         return new BaseResponse<List<ProjectEntity>>(list);

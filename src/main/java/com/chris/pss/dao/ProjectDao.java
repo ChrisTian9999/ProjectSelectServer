@@ -36,6 +36,10 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
         return false;
     }
 
+    public List<ProjectEntity> getProjectListByTno(String tno) {
+        return findByHQL("from ProjectEntity p where p.teacher.tno=? order by p.id desc,p.isChecked desc", tno);
+    }
+
     /**
      * 查询审核的状态是isChecked的课题
      *
