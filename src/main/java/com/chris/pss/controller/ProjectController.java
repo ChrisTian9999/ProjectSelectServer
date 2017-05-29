@@ -38,18 +38,11 @@ public class ProjectController {
 
     /**
      * 获得所有的课题的列表
-     *
-     * @param isChecked 是否通过审核
      */
     @RequestMapping("/list")
     @ResponseBody
-    public BaseResponse<List<ProjectEntity>> getAllByCheckState(@RequestParam(value = "isChecked", required = false) Boolean isChecked) {
-        List<ProjectEntity> list = null;
-        if (isChecked == null) {
-            list = new ProjectDao().getAll();
-        } else {
-            list = new ProjectDao().getByCheckState(isChecked);
-        }
+    public BaseResponse<List<ProjectEntity>> getAll() {
+        List<ProjectEntity> list = new ProjectDao().getAll();
         return new BaseResponse<List<ProjectEntity>>(list);
     }
 

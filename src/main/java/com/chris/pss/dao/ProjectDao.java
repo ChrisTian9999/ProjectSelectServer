@@ -40,15 +40,6 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
         return findByHQL("from ProjectEntity p where p.teacher.tno=? order by p.id desc,p.isChecked desc", tno);
     }
 
-    /**
-     * 查询审核的状态是isChecked的课题
-     *
-     * @param isChecked 状态，是否通过审核
-     */
-    public List<ProjectEntity> getByCheckState(boolean isChecked) {
-        return isChecked ? findByHQL("from ProjectEntity where isChecked=1")
-                : findByHQL("from ProjectEntity where isChecked!=1");
-    }
 
     /**
      * 查询审核的状态是isChecked的课题
@@ -57,8 +48,8 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
      * @param isChecked 状态，是否通过审核
      */
     public List<ProjectEntity> getByCheckState(int departId, boolean isChecked) {
-        return isChecked ? findByHQL("from ProjectEntity where isChecked=1 and departmentId=?", departId)
-                : findByHQL("from ProjectEntity where isChecked!=1 and departmentId=?", departId);
+        return isChecked ? findByHQL("from ProjectEntity p where p.major.parent.id=? and p.isChecked=1 order by p.teacher.id asc", departId)
+                : findByHQL("from ProjectEntity p where p.major.parent.id=? and p.isChecked!=1 order by p.teacher.id asc", departId);
     }
 
     public List<ProjectEntity> getAll() {
