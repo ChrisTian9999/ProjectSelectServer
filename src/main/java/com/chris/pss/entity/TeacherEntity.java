@@ -8,18 +8,15 @@ import javax.persistence.*;
  * Created by noonecode on 2017/5/12.
  */
 @Entity
-@Table(name = "teacher", schema = "dbo", catalog = "proj_sel_sys")
+@Table(name = "t_teacher", schema = "dbo", catalog = "proj_sel_sys")
 public class TeacherEntity {
     @Id
     @Column(name = "id")
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "depart_id", nullable = false)
     private DepartEntity depart;//所在学院
-
-    @Column(name = "department_id")
-    private Integer departmentId;
 
     @Column(name = "tno")
     private String tno;
@@ -45,7 +42,6 @@ public class TeacherEntity {
     @Column(name = "is_admin")
     private Integer isAdmin;
 
-
     public Integer getId() {
         return id;
     }
@@ -60,14 +56,6 @@ public class TeacherEntity {
 
     public void setDepart(DepartEntity depart) {
         this.depart = depart;
-    }
-
-    public Integer getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
     }
 
     public String getTno() {
@@ -143,7 +131,6 @@ public class TeacherEntity {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (depart != null ? !depart.equals(that.depart) : that.depart != null) return false;
-        if (departmentId != null ? !departmentId.equals(that.departmentId) : that.departmentId != null) return false;
         if (tno != null ? !tno.equals(that.tno) : that.tno != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (pwd != null ? !pwd.equals(that.pwd) : that.pwd != null) return false;
@@ -158,7 +145,6 @@ public class TeacherEntity {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (depart != null ? depart.hashCode() : 0);
-        result = 31 * result + (departmentId != null ? departmentId.hashCode() : 0);
         result = 31 * result + (tno != null ? tno.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (pwd != null ? pwd.hashCode() : 0);

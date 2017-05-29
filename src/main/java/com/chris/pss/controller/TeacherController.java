@@ -27,30 +27,30 @@ public class TeacherController {
     /**
      * 教师登陆
      */
-    @RequestMapping("/login")
-    @ResponseBody
-    public BaseResponse<Map> login(@RequestParam("tno") String tno, @RequestParam("pwd") String pwd) {
-        TeacherEntity teacher = new TeacherDao().findTchByTno(tno);
-        if (teacher == null) {//账号错误
-            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
-        }
-        if (EmptyUtils.isEmpty(pwd) || !pwd.equals(teacher.getPwd())) {//密码错误
-            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_PWD, null);
-        }
-        teacher.setPwd(null);//保护密码
-
-        DepartEntity depart = new DepartDao().findById(teacher.getDepartmentId());
-        if (depart == null) {
-            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
-        }
-        List<DepartEntity> departList = new DepartDao().getDepartList();
-        //
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("tch", teacher);
-        map.put("depart", depart);
-        map.put("extras", departList);
-        return new BaseResponse<Map>(map);
-    }
+//    @RequestMapping("/login")
+//    @ResponseBody
+//    public BaseResponse<Map> login(@RequestParam("tno") String tno, @RequestParam("pwd") String pwd) {
+//        TeacherEntity teacher = new TeacherDao().findTchByTno(tno);
+//        if (teacher == null) {//账号错误
+//            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
+//        }
+//        if (EmptyUtils.isEmpty(pwd) || !pwd.equals(teacher.getPwd())) {//密码错误
+//            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_PWD, null);
+//        }
+//        teacher.setPwd(null);//保护密码
+//
+//        DepartEntity depart = new DepartDao().findById(teacher.getDepartmentId());
+//        if (depart == null) {
+//            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
+//        }
+//        List<DepartEntity> departList = new DepartDao().getDepartList();
+//        //
+//        Map<String, Object> map = new HashMap<String, Object>();
+//        map.put("tch", teacher);
+//        map.put("depart", depart);
+//        map.put("extras", departList);
+//        return new BaseResponse<Map>(map);
+//    }
 
     /**
      * 拿教师除学院之外的信息
@@ -91,14 +91,9 @@ public class TeacherController {
             return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
         }
         teacher.setPwd(null);//保护密码
-        DepartEntity depart = new DepartDao().findById(teacher.getDepartmentId());
-        if (depart == null) {
-            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
-        }
         //
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("tch", teacher);
-        map.put("depart", depart);
         return new BaseResponse<Map>(map);
     }
 

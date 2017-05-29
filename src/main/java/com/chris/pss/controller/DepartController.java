@@ -1,6 +1,7 @@
 package com.chris.pss.controller;
 
 import com.chris.pss.dao.DepartDao;
+import com.chris.pss.dao.ProjectDao;
 import com.chris.pss.entity.BaseResponse;
 import com.chris.pss.entity.DepartEntity;
 import com.chris.pss.utils.Const;
@@ -19,7 +20,7 @@ import java.util.Map;
  * Created by noonecode on 2017/5/8.
  */
 @Controller
-@RequestMapping("/department")
+@RequestMapping("/depart")
 public class DepartController {
 
 
@@ -40,14 +41,11 @@ public class DepartController {
         return new BaseResponse<Map>(map);
     }
 
-    @RequestMapping("/major/{id}")
+    @RequestMapping("/{departId}/list")
     @ResponseBody
-    public BaseResponse<DepartEntity> getMajorById(@PathVariable("id") int id) {
-        DepartEntity major = new DepartDao().findMajorById(id);
-        if (major != null) {
-            return new BaseResponse<DepartEntity>(major);
-        }
-        return new BaseResponse<DepartEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_MAJOR, null);
+    public BaseResponse<List<DepartEntity>> getMajorById(@PathVariable("departId") int departId) {
+        List<DepartEntity> majorList = new DepartDao().getMajorList(departId);
+        return new BaseResponse<List<DepartEntity>>(majorList);
     }
 
 

@@ -1,9 +1,9 @@
 /*
-系别专业表，专业才有开始时间与parentId
+系别专业表，专业才有时间与parentId
 */
-create table department(
+create table t_depart(
 id int primary key,
-parent_id int,
+parent_id int foreign key references t_depart(id),
 name varchar(64),
 time_begin varchar(32),
 time_end varchar(32)
@@ -11,11 +11,11 @@ time_end varchar(32)
 
 
 /*
- *教师表
+ *教师表,包含包含学院的id
  */
-create table teacher(
+create table t_teacher(
 id int identity(1,1) primary key,
-department_id int foreign key references department(id),
+depart_id int foreign key references t_depart(id) not null,
 tno varchar(24) unique,
 name varchar(24),
 pwd varchar(32),
@@ -26,30 +26,12 @@ email varchar(32),
 is_admin int default 0 check(is_admin='0' or is_admin='1')
 );
 
-
-/*
-*学生表
-*/
-create table student(
-id int identity(1,1) primary key,
-department_id int foreign key references department(id),
-sno varchar(24) unique,
-name varchar(24),
-pwd varchar(32),
-gender int default 0 check(gender='0' or gender='1'),
-tel varchar(24),
-heart_beat bigint default 0,
-);
-
-
 /*课题表
 */
-create table project(
+create table t_project(
 id int identity(1,1) primary key,
-department_id int foreign key references department(id) not null,
-major_id int foreign key references department(id) not null,
-teacher_id int foreign key references teacher(id) not null,
-student_id int foreign key references student(id),
+depart_id int foreign key references t_depart(id) not null,
+teacher_id int foreign key references t_teacher(id) not null,
 title text not null,
 detail text not null,
 ranking int default 0 check(ranking>=0 and ranking<=5),
@@ -59,31 +41,51 @@ is_finish int default 0
 
 
 /*
-系别专业表数据
+*学生表,包含专业的id
 */
-insert into department values('1', null, '电子与信息工程学院', null, null);
-insert into department values('2', null, '材料与化工学院', null,  null);
-insert into department values('101', '1', '计算机科学与技术', null, null);
-insert into department values('102', '1', '网络工程', null, null);
-insert into department values('201', '2', '应用化学', null, null);
+create table t_student(
+id int identity(1,1) primary key,
+depart_id int foreign key references t_depart(id) not null,
+project_id int foreign key references t_project(id),
+sno varchar(24) unique,
+name varchar(24),
+pwd varchar(32),
+classname varchar(32),
+gender int default 0 check(gender='0' or gender='1'),
+tel varchar(24),
+heart_beat bigint default 0,
+);
+
+
 
 /*
-*学生表数据
+系别专业表数据
 */
-insert into student values('101', '201301', '方同学', '123456', '1', '18301234501', null);
-insert into student values('101', '201302', '田同学', '123456', '1', '18301234502', null);
-insert into student values('102', '201303', '胡同学', '123456', '0', '18301234503', null);
-insert into student values('102', '201304', '贾同学', '123456', '1', '18301234504', null);
-insert into student values('201', '201305', '王同学', '123456', '1', '18301234505', null);
-insert into student values('201', '201306', '葛同学', '123456', '0', '18301234506', null);
+insert into t_depart values('1', null, '电子与信息工程学院', null, null);
+insert into t_depart values('2', null, '材料与化工学院', null,  null);
+insert into t_depart values('101', '1', '计算机科学与技术', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
+insert into t_depart values('102', '1', '网络工程', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
+insert into t_depart values('201', '2', '应用化学', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
 
 
 /*
 *教师表数据
 */
-insert into teacher values('1', 't001', '赵老师', '123456', '1', '老师', '18100000001', 'zhao@163.com', '0');
-insert into teacher values('1', 't002', '钱老师', '123456', '1', '副教授', '18100000002', 'qian@163.com', '1');
-insert into teacher values('1', 't003', '孙老师', '123456', '1', '教授', '18100000003', 'sun@163.com', '0');
-insert into teacher values('2', 't004', '李老师', '123456', '1', '老师', '18100000004', 'li@163.com', '1');
+insert into t_teacher values('1', 't001', '赵老师', '123456', '1', '老师', '18100000001', 'zhao@163.com', '0');
+insert into t_teacher values('1', 't002', '钱老师', '123456', '1', '副教授', '18100000002', 'qian@163.com', '1');
+insert into t_teacher values('1', 't003', '孙老师', '123456', '1', '教授', '18100000003', 'sun@163.com', '0');
+insert into t_teacher values('2', 't004', '李老师', '123456', '1', '老师', '18100000004', 'li@163.com', '1');
 
+
+
+
+/*
+*学生表数据
+*/
+insert into t_student values('101', null, '201301', '方同学', '123456', '10101', '1', '18301234501', null);
+insert into t_student values('101', null, '201302', '田同学', '123456', '10101', '1', '18301234502', null);
+insert into t_student values('102', null, '201303', '胡同学', '123456', '10201', '0', '18301234503', null);
+insert into t_student values('102', null, '201304', '贾同学', '123456', '10201', '1', '18301234504', null);
+insert into t_student values('201', null, '201305', '王同学', '123456', '20101', '1', '18301234505', null);
+insert into t_student values('201', null, '201306', '葛同学', '123456', '20101', '0', '18301234506', null);
 

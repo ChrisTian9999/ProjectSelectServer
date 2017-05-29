@@ -34,31 +34,31 @@ public class StudentController {
     }
 
 
-    @RequestMapping("/login")
-    @ResponseBody
-    public BaseResponse<Map> login(@RequestParam("sno") String sno, @RequestParam("pwd") String pwd) {
-        StudentEntity student = new StudentDao().findStudentBySno(sno);
-        if (student == null) {//账号错误
-            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_SNO, null);
-        }
-        if (!student.getPwd().equals(pwd)) {//密码错误
-            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_PWD, null);
-        }
-        student.setPwd(null);//保护密码
-
-        DepartEntity depart = new DepartDao().findById(student.getDepartmentId());
-        if (depart == null) {
-            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
-        }
-        List<DepartEntity> departList = new DepartDao().getDepartList();
-        //
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("stud", student);
-        map.put("major", depart);
-        map.put("proj", null);
-        map.put("extras", departList);
-        return new BaseResponse<Map>(map);
-    }
+//    @RequestMapping("/login")
+//    @ResponseBody
+//    public BaseResponse<Map> login(@RequestParam("sno") String sno, @RequestParam("pwd") String pwd) {
+//        StudentEntity student = new StudentDao().findStudentBySno(sno);
+//        if (student == null) {//账号错误
+//            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_SNO, null);
+//        }
+//        if (!student.getPwd().equals(pwd)) {//密码错误
+//            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_PWD, null);
+//        }
+//        student.setPwd(null);//保护密码
+//
+//        DepartEntity depart = new DepartDao().findById(student.getDepartmentId());
+//        if (depart == null) {
+//            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
+//        }
+//        List<DepartEntity> departList = new DepartDao().getDepartList();
+//        //
+//        Map<String, Object> map = new HashMap<String, Object>();
+//        map.put("stud", student);
+//        map.put("major", depart);
+//        map.put("proj", null);
+//        map.put("extras", departList);
+//        return new BaseResponse<Map>(map);
+//    }
 
 
     @RequestMapping("/id/{id}")

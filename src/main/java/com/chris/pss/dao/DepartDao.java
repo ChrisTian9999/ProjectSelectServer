@@ -18,19 +18,12 @@ public class DepartDao extends BaseDao<DepartEntity> {
         return update(new String[]{"timeBegin", "timeEnd"}, new String[]{start, end}, new String[]{"id=" + id});
     }
 
-    /**
-     * 根据id找到某个专业
-     */
-    public DepartEntity findMajorById(int id) {
-        List<DepartEntity> list = findByHQL("from DepartEntity where id=? and parentId is not null", id);
-        return EmptyUtils.isEmpty(list) ? null : list.get(0);
-    }
 
     /**
      * 根据学院的id找所属所有的专业
      */
-    public List<DepartEntity> getMajorListByParentId(int parentId) {
-        List<DepartEntity> list = findByHQL("from DepartEntity where parentId=?", parentId);
+    public List<DepartEntity> getMajorList(int parentId) {
+        List<DepartEntity> list = findByHQL("from DepartEntity where parent!=null and parent.id=?", parentId);
         return list != null ? list : new ArrayList<DepartEntity>();
     }
 

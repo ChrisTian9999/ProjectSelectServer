@@ -1,24 +1,48 @@
 package com.chris.pss.entity;
 
+import org.hibernate.annotations.ForeignKey;
+
 import javax.persistence.*;
 
 /**
  * Created by noonecode on 2017/5/12.
  */
 @Entity
-@Table(name = "student", schema = "dbo", catalog = "proj_sel_sys")
+@Table(name = "t_student", schema = "dbo", catalog = "proj_sel_sys")
 public class StudentEntity {
-    private Integer id;
-    private Integer departmentId;
-    private String sno;
-    private String name;
-    private String pwd;
-    private Integer gender;
-    private String tel;
-    private Long heartBeat;
-
     @Id
     @Column(name = "id")
+    private Integer id;
+
+    /**
+     * 专业
+     */
+    @ManyToOne
+    @JoinColumn(name="depart_id", nullable = false)
+    private DepartEntity major;
+
+    @Column(name = "sno")
+    private String sno;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "pwd")
+    private String pwd;
+
+    @Column(name = "classname")
+    private Integer classname;
+
+    @Column(name = "gender")
+    private Integer gender;
+
+    @Column(name = "tel")
+    private String tel;
+
+    @Column(name = "heart_beat")
+    private Long heartBeat;
+
+
     public Integer getId() {
         return id;
     }
@@ -27,18 +51,14 @@ public class StudentEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "department_id")
-    public Integer getDepartmentId() {
-        return departmentId;
+    public DepartEntity getMajor() {
+        return major;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setMajor(DepartEntity major) {
+        this.major = major;
     }
 
-    @Basic
-    @Column(name = "sno")
     public String getSno() {
         return sno;
     }
@@ -47,8 +67,6 @@ public class StudentEntity {
         this.sno = sno;
     }
 
-    @Basic
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -57,8 +75,6 @@ public class StudentEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "pwd")
     public String getPwd() {
         return pwd;
     }
@@ -67,8 +83,6 @@ public class StudentEntity {
         this.pwd = pwd;
     }
 
-    @Basic
-    @Column(name = "gender")
     public Integer getGender() {
         return gender;
     }
@@ -77,8 +91,6 @@ public class StudentEntity {
         this.gender = gender;
     }
 
-    @Basic
-    @Column(name = "tel")
     public String getTel() {
         return tel;
     }
@@ -87,14 +99,20 @@ public class StudentEntity {
         this.tel = tel;
     }
 
-    @Basic
-    @Column(name = "heart_beat")
     public Long getHeartBeat() {
         return heartBeat;
     }
 
     public void setHeartBeat(Long heartBeat) {
         this.heartBeat = heartBeat;
+    }
+
+    public Integer getClassname() {
+        return classname;
+    }
+
+    public void setClassname(Integer classname) {
+        this.classname = classname;
     }
 
     @Override
@@ -104,25 +122,25 @@ public class StudentEntity {
 
         StudentEntity that = (StudentEntity) o;
 
-        if (id != that.id) return false;
-        if (departmentId != null ? !departmentId.equals(that.departmentId) : that.departmentId != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (major != null ? !major.equals(that.major) : that.major != null) return false;
         if (sno != null ? !sno.equals(that.sno) : that.sno != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (pwd != null ? !pwd.equals(that.pwd) : that.pwd != null) return false;
+        if (classname != null ? !classname.equals(that.classname) : that.classname != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
         if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
-        if (heartBeat != null ? !heartBeat.equals(that.heartBeat) : that.heartBeat != null) return false;
-
-        return true;
+        return heartBeat != null ? heartBeat.equals(that.heartBeat) : that.heartBeat == null;
     }
 
     @Override
     public int hashCode() {
-        Integer result = id;
-        result = 31 * result + (departmentId != null ? departmentId.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (major != null ? major.hashCode() : 0);
         result = 31 * result + (sno != null ? sno.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (pwd != null ? pwd.hashCode() : 0);
+        result = 31 * result + (classname != null ? classname.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         result = 31 * result + (tel != null ? tel.hashCode() : 0);
         result = 31 * result + (heartBeat != null ? heartBeat.hashCode() : 0);
