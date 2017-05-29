@@ -89,3 +89,5 @@ insert into t_student values('102', null, '201304', '贾同学', '123456', '10201',
 insert into t_student values('201', null, '201305', '王同学', '123456', '20101', '1', '18301234505', null);
 insert into t_student values('201', null, '201306', '葛同学', '123456', '20101', '0', '18301234506', null);
 
+
+

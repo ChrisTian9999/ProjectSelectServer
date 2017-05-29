@@ -11,14 +11,14 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
     /**
      * 创建课题
      */
-    public boolean create(int departId, int majorId, int teacherId, String title, String detail, int ranking) {
+    public boolean create(int majorId, int teacherId, String title, String detail, int ranking) {
         Session session = null;
         Transaction tx = null;
         try {
             session = this.getSession();
             tx = session.beginTransaction();
-            String hql = "insert into project values('%d','%d','%d',NULL ,'%s','%s','%d', '0' , '0')";
-            hql = String.format(hql, departId, majorId, teacherId, title, detail, ranking);
+            String hql = "insert into t_project values('%d','%d','%s','%s','%d','0','0')";
+            hql = String.format(hql, majorId, teacherId, title, detail, ranking);
             session.createSQLQuery(hql).executeUpdate();
             tx.commit();
             return true;

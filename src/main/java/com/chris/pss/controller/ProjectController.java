@@ -21,14 +21,18 @@ public class ProjectController {
 
     @RequestMapping("/create")
     @ResponseBody
-    public BaseResponse<Map> postCreate(@RequestBody ProjectEntity entity) {
-//        boolean flag = new ProjectDao()
-//                .create(entity.getDepartmentId(), entity.getMajorId(), entity.getTeacherId(), entity.getTitle(), entity.getDetail(), entity.getRanking());
-//        if (flag) {
-//            HashMap<String, Boolean> map = new HashMap<String, Boolean>();
-//            map.put("flag", true);
-//            return new BaseResponse<Map>(map);
-//        }
+    public BaseResponse<Map> postCreate(
+            @RequestParam("majorId") Integer majorId,
+            @RequestParam("teacherId") Integer teacherId,
+            @RequestParam("title") String title,
+            @RequestParam("detail") String detail,
+            @RequestParam("ranking") Integer ranking) {
+        boolean flag = new ProjectDao().create(majorId, teacherId, title, detail, ranking);
+        if (flag) {
+            HashMap<String, Boolean> map = new HashMap<String, Boolean>();
+            map.put("flag", true);
+            return new BaseResponse<Map>(map);
+        }
         return new BaseResponse<Map>(Const.ERROR_SERVER, Const.ERROR_SERVER_MSG, null);
     }
 
