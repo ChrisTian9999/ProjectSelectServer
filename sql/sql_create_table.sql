@@ -26,18 +26,6 @@ email varchar(32),
 is_admin int default 0 check(is_admin='0' or is_admin='1')
 );
 
-/*课题表
-*/
-create table t_project(
-id int identity(1,1) primary key,
-depart_id int foreign key references t_depart(id) not null,
-teacher_id int foreign key references t_teacher(id) not null,
-title text not null,
-detail text not null,
-ranking int default 0 check(ranking>=0 and ranking<=5),
-is_checked int default 0,
-is_finish int default 0
-);
 
 
 /*
@@ -46,7 +34,6 @@ is_finish int default 0
 create table t_student(
 id int identity(1,1) primary key,
 depart_id int foreign key references t_depart(id) not null,
-project_id int foreign key references t_project(id),
 sno varchar(24) unique,
 name varchar(24),
 pwd varchar(32),
@@ -56,6 +43,19 @@ tel varchar(24),
 heart_beat bigint default 0,
 );
 
+/*课题表
+*/
+create table t_project(
+id int identity(1,1) primary key,
+depart_id int foreign key references t_depart(id) not null,
+teacher_id int foreign key references t_teacher(id) not null,
+student_id int foreign key references t_student(id),
+title text not null,
+detail text not null,
+ranking int default 0 check(ranking>=0 and ranking<=5),
+is_checked int default 0,
+is_finish int default 0
+);
 
 
 /*
@@ -82,12 +82,12 @@ insert into t_teacher values('2', 't004', '李老师', '123456', '1', '老师', '1810
 /*
 *学生表数据
 */
-insert into t_student values('101', null, '201301', '方同学', '123456', '10101', '1', '18301234501', null);
-insert into t_student values('101', null, '201302', '田同学', '123456', '10101', '1', '18301234502', null);
-insert into t_student values('102', null, '201303', '胡同学', '123456', '10201', '0', '18301234503', null);
-insert into t_student values('102', null, '201304', '贾同学', '123456', '10201', '1', '18301234504', null);
-insert into t_student values('201', null, '201305', '王同学', '123456', '20101', '1', '18301234505', null);
-insert into t_student values('201', null, '201306', '葛同学', '123456', '20101', '0', '18301234506', null);
+insert into t_student values('101', '201301', '方同学', '123456', '10101', '1', '18301234501', null);
+insert into t_student values('101', '201302', '田同学', '123456', '10101', '1', '18301234502', null);
+insert into t_student values('102', '201303', '胡同学', '123456', '10201', '0', '18301234503', null);
+insert into t_student values('102', '201304', '贾同学', '123456', '10201', '1', '18301234504', null);
+insert into t_student values('201', '201305', '王同学', '123456', '20101', '1', '18301234505', null);
+insert into t_student values('201', '201306', '葛同学', '123456', '20101', '0', '18301234506', null);
 
 
 

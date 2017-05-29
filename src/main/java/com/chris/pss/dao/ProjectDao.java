@@ -17,7 +17,7 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
         try {
             session = this.getSession();
             tx = session.beginTransaction();
-            String hql = "insert into t_project values('%d','%d','%s','%s','%d','0','0')";
+            String hql = "insert into t_project values('%d','%d',NULL ,'%s','%s','%d','0','0')";
             hql = String.format(hql, majorId, teacherId, title, detail, ranking);
             session.createSQLQuery(hql).executeUpdate();
             tx.commit();

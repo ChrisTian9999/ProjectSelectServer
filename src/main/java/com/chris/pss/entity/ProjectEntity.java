@@ -23,6 +23,10 @@ public class ProjectEntity {
     @JoinColumn(name="teacher_id", nullable = false)
     private TeacherEntity teacher;
 
+    @OneToOne
+    @JoinColumn(name="student_id", nullable = true)
+    private StudentEntity student;
+
     @Column(name = "title")
     private String title;
 
@@ -100,6 +104,14 @@ public class ProjectEntity {
         this.isFinish = isFinish;
     }
 
+    public StudentEntity getStudent() {
+        return student;
+    }
+
+    public void setStudent(StudentEntity student) {
+        this.student = student;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -110,6 +122,7 @@ public class ProjectEntity {
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (major != null ? !major.equals(that.major) : that.major != null) return false;
         if (teacher != null ? !teacher.equals(that.teacher) : that.teacher != null) return false;
+        if (student != null ? !student.equals(that.student) : that.student != null) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (detail != null ? !detail.equals(that.detail) : that.detail != null) return false;
         if (ranking != null ? !ranking.equals(that.ranking) : that.ranking != null) return false;
@@ -122,6 +135,7 @@ public class ProjectEntity {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (major != null ? major.hashCode() : 0);
         result = 31 * result + (teacher != null ? teacher.hashCode() : 0);
+        result = 31 * result + (student != null ? student.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (detail != null ? detail.hashCode() : 0);
         result = 31 * result + (ranking != null ? ranking.hashCode() : 0);
