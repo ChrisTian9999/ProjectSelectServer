@@ -10,64 +10,64 @@ import javax.persistence.*;
 @Entity
 @Table(name = "project", schema = "dbo", catalog = "proj_sel_sys")
 public class ProjectEntity {
-    private int id;
-    private int departmentId;
-    private int majorId;
-    private int teacherId;
-    private int studentId;
+    private Integer id;
+    private Integer departmentId;
+    private Integer majorId;
+    private Integer teacherId;
+    private Integer studentId;
     private String title;
     private String detail;
-    private int ranking;
+    private Integer ranking;
     private Integer isChecked;
     private Integer isFinish;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     @Basic
     @Column(name = "major_id")
-    public int getMajorId() {
+    public Integer getMajorId() {
         return majorId;
     }
 
-    public void setMajorId(int majorId) {
+    public void setMajorId(Integer majorId) {
         this.majorId = majorId;
     }
 
     @Basic
     @Column(name = "department_id")
-    public int getDepartmentId() {
+    public Integer getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(int departmentId) {
+    public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
     }
 
     @Basic
     @Column(name = "teacher_id")
-    public int getTeacherId() {
+    public Integer getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
     }
 
     @Basic
     @Column(name = "student_id")
-    public int getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 
@@ -93,11 +93,11 @@ public class ProjectEntity {
 
     @Basic
     @Column(name = "ranking")
-    public int getRanking() {
+    public Integer getRanking() {
         return ranking;
     }
 
-    public void setRanking(int ranking) {
+    public void setRanking(Integer ranking) {
         this.ranking = ranking;
     }
 

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "department", schema = "dbo", catalog = "proj_sel_sys")
 public class DepartmentEntity {
-    private int id;
+    private Integer id;
     private Integer parentId;
     private String name;
     private String timeBegin;
@@ -16,11 +16,11 @@ public class DepartmentEntity {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -82,7 +82,7 @@ public class DepartmentEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = id;
         result = 31 * result + (parentId != null ? parentId.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (timeBegin != null ? timeBegin.hashCode() : 0);

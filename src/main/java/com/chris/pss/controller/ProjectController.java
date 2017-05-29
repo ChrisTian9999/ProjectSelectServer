@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +30,37 @@ public class ProjectController {
             return new BaseResponse<Map>(map);
         }
         return new BaseResponse<Map>(Const.ERROR_SERVER, Const.ERROR_SERVER_MSG, null);
+    }
+
+    /**
+     * 获得所有的课题的列表
+     *
+     * @param isChecked 是否通过审核
+     */
+    @RequestMapping("/list")
+    @ResponseBody
+    public BaseResponse<List<ProjectEntity>> getAllByCheckState(@RequestParam(value = "isChecked", required = false) Boolean isChecked) {
+        List<ProjectEntity> list = null;
+        if (isChecked == null) {
+            list = new ProjectDao().getAll();
+        } else {
+            list = new ProjectDao().getByCheckState(isChecked);
+        }
+        return new BaseResponse<List<ProjectEntity>>(list);
+    }
+
+    /**
+     * 获得学院所有的课题的列表
+     *
+     * @param isChecked 是否通过审核
+     */
+    @RequestMapping("/depart/list")
+    @ResponseBody
+    public BaseResponse<List<ProjectEntity>> postCreate(
+            @RequestParam("departId") int departId
+            , @RequestParam("isChecked") Boolean isChecked) {
+        List<ProjectEntity> list = new ProjectDao().getByCheckState(departId, isChecked);
+        return new BaseResponse<List<ProjectEntity>>(list);
     }
 
 }

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "student", schema = "dbo", catalog = "proj_sel_sys")
 public class StudentEntity {
-    private int id;
+    private Integer id;
     private Integer departmentId;
     private String sno;
     private String name;
@@ -19,11 +19,11 @@ public class StudentEntity {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -118,7 +118,7 @@ public class StudentEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = id;
         result = 31 * result + (departmentId != null ? departmentId.hashCode() : 0);
         result = 31 * result + (sno != null ? sno.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
