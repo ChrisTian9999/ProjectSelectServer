@@ -27,34 +27,28 @@ public class TeacherController {
     /**
      * 教师登陆
      */
-//    @RequestMapping("/login")
-//    @ResponseBody
-//    public BaseResponse<Map> login(@RequestParam("tno") String tno, @RequestParam("pwd") String pwd) {
-//        TeacherEntity teacher = new TeacherDao().findTchByTno(tno);
-//        if (teacher == null) {//账号错误
-//            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
-//        }
-//        if (EmptyUtils.isEmpty(pwd) || !pwd.equals(teacher.getPwd())) {//密码错误
-//            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_PWD, null);
-//        }
-//        teacher.setPwd(null);//保护密码
-//
-//        DepartEntity depart = new DepartDao().findById(teacher.getDepartmentId());
-//        if (depart == null) {
-//            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
-//        }
-//        List<DepartEntity> departList = new DepartDao().getDepartList();
-//        //
-//        Map<String, Object> map = new HashMap<String, Object>();
-//        map.put("tch", teacher);
-//        map.put("depart", depart);
-//        map.put("extras", departList);
-//        return new BaseResponse<Map>(map);
-//    }
+    @RequestMapping("/login")
+    @ResponseBody
+    public BaseResponse<Map> login(@RequestParam("tno") String tno, @RequestParam("pwd") String pwd) {
+        TeacherEntity teacher = new TeacherDao().findTchByTno(tno);
+        if (teacher == null) {//账号错误
+            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
+        }
+        if (EmptyUtils.isEmpty(pwd) || !pwd.equals(teacher.getPwd())) {//密码错误
+            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_PWD, null);
+        }
+        teacher.setPwd(null);//保护密码
 
-    /**
-     * 拿教师除学院之外的信息
-     */
+        //专业列表
+        Integer departId = teacher.getDepart().getId();
+        List<DepartEntity> majorList = new DepartDao().getMajorList(departId);
+        //
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("teacher", teacher);
+        map.put("majors", majorList);
+        return new BaseResponse<Map>(map);
+    }
+
     @RequestMapping("/id/{id}")
     @ResponseBody
     public BaseResponse<TeacherEntity> getTchById(@PathVariable("id") int id) {
@@ -66,35 +60,15 @@ public class TeacherController {
         return new BaseResponse<TeacherEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_TEACHER, null);
     }
 
-    /**
-     * 拿教师除学院之外的基本信息
-     */
     @RequestMapping("/tno/{tno}")
     @ResponseBody
-    public BaseResponse<TeacherEntity> getTchByTno(@PathVariable("tno") String tno) {
+    public BaseResponse<TeacherEntity> getTchInfoByTno(@PathVariable("tno") String tno) {
         TeacherEntity teacher = new TeacherDao().findTchByTno(tno);
         if (teacher != null) {
-            teacher.setPwd(null);//密码保护
+            teacher.setPwd(null);//保护密码
             return new BaseResponse<TeacherEntity>(teacher);
         }
-        return new BaseResponse<TeacherEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_TEACHER, null);
-    }
-
-    /**
-     * 根据教师的编号获得教师的信息
-     */
-    @RequestMapping("/info/tno/{tno}")
-    @ResponseBody
-    public BaseResponse<Map> getTchInfoByTno(@PathVariable("tno") String tno) {
-        TeacherEntity teacher = new TeacherDao().findTchByTno(tno);
-        if (teacher == null) {//账号错误
-            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
-        }
-        teacher.setPwd(null);//保护密码
-        //
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("tch", teacher);
-        return new BaseResponse<Map>(map);
+        return new BaseResponse<TeacherEntity>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
     }
 
 }
