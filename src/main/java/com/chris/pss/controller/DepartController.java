@@ -2,7 +2,7 @@ package com.chris.pss.controller;
 
 import com.chris.pss.dao.DepartDao;
 import com.chris.pss.entity.BaseResponse;
-import com.chris.pss.entity.DepartmentEntity;
+import com.chris.pss.entity.DepartEntity;
 import com.chris.pss.utils.Const;
 import com.chris.pss.utils.SimpleUtils;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/department")
-public class DepartmentController {
+public class DepartController {
 
 
     @RequestMapping("/major/{id}/modify")
@@ -42,12 +42,12 @@ public class DepartmentController {
 
     @RequestMapping("/major/{id}")
     @ResponseBody
-    public BaseResponse<DepartmentEntity> getMajorById(@PathVariable("id") int id) {
-        DepartmentEntity major = new DepartDao().findMajorById(id);
+    public BaseResponse<DepartEntity> getMajorById(@PathVariable("id") int id) {
+        DepartEntity major = new DepartDao().findMajorById(id);
         if (major != null) {
-            return new BaseResponse<DepartmentEntity>(major);
+            return new BaseResponse<DepartEntity>(major);
         }
-        return new BaseResponse<DepartmentEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_MAJOR, null);
+        return new BaseResponse<DepartEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_MAJOR, null);
     }
 
 
@@ -56,11 +56,11 @@ public class DepartmentController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public BaseResponse<List<DepartmentEntity>> getDepartList() {
-        List<DepartmentEntity> list = new DepartDao().getDepartList();
+    public BaseResponse<List<DepartEntity>> getDepartList() {
+        List<DepartEntity> list = new DepartDao().getDepartList();
         if (list == null) {
-            return new BaseResponse<List<DepartmentEntity>>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPARTMENT_ALL, null);
+            return new BaseResponse<List<DepartEntity>>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPARTMENT_ALL, null);
         }
-        return new BaseResponse<List<DepartmentEntity>>(list);
+        return new BaseResponse<List<DepartEntity>>(list);
     }
 }

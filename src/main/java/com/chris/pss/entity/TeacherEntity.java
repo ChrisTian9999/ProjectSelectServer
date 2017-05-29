@@ -1,5 +1,7 @@
 package com.chris.pss.entity;
 
+import org.hibernate.annotations.ForeignKey;
+
 import javax.persistence.*;
 
 /**
@@ -8,19 +10,42 @@ import javax.persistence.*;
 @Entity
 @Table(name = "teacher", schema = "dbo", catalog = "proj_sel_sys")
 public class TeacherEntity {
-    private Integer id;
-    private Integer departmentId;
-    private String tno;
-    private String name;
-    private String pwd;
-    private Integer gender;
-    private String zhicheng;
-    private String tel;
-    private String email;
-    private Integer isAdmin;
-
     @Id
     @Column(name = "id")
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private DepartEntity depart;//所在学院
+
+    @Column(name = "department_id")
+    private Integer departmentId;
+
+    @Column(name = "tno")
+    private String tno;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "pwd")
+    private String pwd;
+
+    @Column(name = "gender")
+    private Integer gender;
+
+    @Column(name = "zhicheng")
+    private String zhicheng;
+
+    @Column(name = "tel")
+    private String tel;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "is_admin")
+    private Integer isAdmin;
+
+
     public Integer getId() {
         return id;
     }
@@ -29,8 +54,14 @@ public class TeacherEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "department_id")
+    public DepartEntity getDepart() {
+        return depart;
+    }
+
+    public void setDepart(DepartEntity depart) {
+        this.depart = depart;
+    }
+
     public Integer getDepartmentId() {
         return departmentId;
     }
@@ -39,8 +70,6 @@ public class TeacherEntity {
         this.departmentId = departmentId;
     }
 
-    @Basic
-    @Column(name = "tno")
     public String getTno() {
         return tno;
     }
@@ -49,8 +78,6 @@ public class TeacherEntity {
         this.tno = tno;
     }
 
-    @Basic
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -59,8 +86,6 @@ public class TeacherEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "pwd")
     public String getPwd() {
         return pwd;
     }
@@ -69,8 +94,6 @@ public class TeacherEntity {
         this.pwd = pwd;
     }
 
-    @Basic
-    @Column(name = "gender")
     public Integer getGender() {
         return gender;
     }
@@ -79,8 +102,6 @@ public class TeacherEntity {
         this.gender = gender;
     }
 
-    @Basic
-    @Column(name = "zhicheng")
     public String getZhicheng() {
         return zhicheng;
     }
@@ -89,8 +110,6 @@ public class TeacherEntity {
         this.zhicheng = zhicheng;
     }
 
-    @Basic
-    @Column(name = "tel")
     public String getTel() {
         return tel;
     }
@@ -99,8 +118,6 @@ public class TeacherEntity {
         this.tel = tel;
     }
 
-    @Basic
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -109,8 +126,6 @@ public class TeacherEntity {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "is_admin")
     public Integer getIsAdmin() {
         return isAdmin;
     }
@@ -126,7 +141,8 @@ public class TeacherEntity {
 
         TeacherEntity that = (TeacherEntity) o;
 
-        if (id != that.id) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (depart != null ? !depart.equals(that.depart) : that.depart != null) return false;
         if (departmentId != null ? !departmentId.equals(that.departmentId) : that.departmentId != null) return false;
         if (tno != null ? !tno.equals(that.tno) : that.tno != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
@@ -135,14 +151,13 @@ public class TeacherEntity {
         if (zhicheng != null ? !zhicheng.equals(that.zhicheng) : that.zhicheng != null) return false;
         if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (isAdmin != null ? !isAdmin.equals(that.isAdmin) : that.isAdmin != null) return false;
-
-        return true;
+        return isAdmin != null ? isAdmin.equals(that.isAdmin) : that.isAdmin == null;
     }
 
     @Override
     public int hashCode() {
-        Integer result = id;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (depart != null ? depart.hashCode() : 0);
         result = 31 * result + (departmentId != null ? departmentId.hashCode() : 0);
         result = 31 * result + (tno != null ? tno.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);

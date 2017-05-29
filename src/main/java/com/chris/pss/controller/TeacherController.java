@@ -3,7 +3,7 @@ package com.chris.pss.controller;
 import com.chris.pss.dao.DepartDao;
 import com.chris.pss.dao.TeacherDao;
 import com.chris.pss.entity.BaseResponse;
-import com.chris.pss.entity.DepartmentEntity;
+import com.chris.pss.entity.DepartEntity;
 import com.chris.pss.entity.TeacherEntity;
 import com.chris.pss.utils.Const;
 import com.chris.pss.utils.EmptyUtils;
@@ -39,11 +39,11 @@ public class TeacherController {
         }
         teacher.setPwd(null);//保护密码
 
-        DepartmentEntity depart = new DepartDao().findById(teacher.getDepartmentId());
+        DepartEntity depart = new DepartDao().findById(teacher.getDepartmentId());
         if (depart == null) {
             return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
         }
-        List<DepartmentEntity> departList = new DepartDao().getDepartList();
+        List<DepartEntity> departList = new DepartDao().getDepartList();
         //
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("tch", teacher);
@@ -91,7 +91,7 @@ public class TeacherController {
             return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
         }
         teacher.setPwd(null);//保护密码
-        DepartmentEntity depart = new DepartDao().findById(teacher.getDepartmentId());
+        DepartEntity depart = new DepartDao().findById(teacher.getDepartmentId());
         if (depart == null) {
             return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
         }

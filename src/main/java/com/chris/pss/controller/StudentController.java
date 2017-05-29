@@ -3,7 +3,7 @@ package com.chris.pss.controller;
 import com.chris.pss.dao.DepartDao;
 import com.chris.pss.dao.StudentDao;
 import com.chris.pss.entity.BaseResponse;
-import com.chris.pss.entity.DepartmentEntity;
+import com.chris.pss.entity.DepartEntity;
 import com.chris.pss.entity.StudentEntity;
 import com.chris.pss.utils.Const;
 import org.springframework.stereotype.Controller;
@@ -46,11 +46,11 @@ public class StudentController {
         }
         student.setPwd(null);//保护密码
 
-        DepartmentEntity depart = new DepartDao().findById(student.getDepartmentId());
+        DepartEntity depart = new DepartDao().findById(student.getDepartmentId());
         if (depart == null) {
             return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
         }
-        List<DepartmentEntity> departList = new DepartDao().getDepartList();
+        List<DepartEntity> departList = new DepartDao().getDepartList();
         //
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("stud", student);

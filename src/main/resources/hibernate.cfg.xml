@@ -17,7 +17,7 @@
         <property name="myeclipse.connection.profile">sqlserver</property>
 
         <!---->
-        <mapping class="com.chris.pss.entity.DepartmentEntity"/>
+        <mapping class="com.chris.pss.entity.DepartEntity"/>
         <mapping class="com.chris.pss.entity.ProjectEntity"/>
         <mapping class="com.chris.pss.entity.TeacherEntity"/>
         <mapping class="com.chris.pss.entity.StudentEntity"/>

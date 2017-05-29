@@ -1,6 +1,6 @@
 package com.chris.pss.dao;
 
-import com.chris.pss.entity.DepartmentEntity;
+import com.chris.pss.entity.DepartEntity;
 import com.chris.pss.utils.EmptyUtils;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by noonecode on 2017/5/8.
  */
-public class DepartDao extends BaseDao<DepartmentEntity> {
+public class DepartDao extends BaseDao<DepartEntity> {
 
     /**
      * 根据id修改这个专业的起止时间
@@ -21,23 +21,23 @@ public class DepartDao extends BaseDao<DepartmentEntity> {
     /**
      * 根据id找到某个专业
      */
-    public DepartmentEntity findMajorById(int id) {
-        List<DepartmentEntity> list = findByHQL("from DepartmentEntity where id=? and parentId is not null", id);
+    public DepartEntity findMajorById(int id) {
+        List<DepartEntity> list = findByHQL("from DepartEntity where id=? and parentId is not null", id);
         return EmptyUtils.isEmpty(list) ? null : list.get(0);
     }
 
     /**
      * 根据学院的id找所属所有的专业
      */
-    public List<DepartmentEntity> getMajorListByParentId(int parentId) {
-        List<DepartmentEntity> list = findByHQL("from DepartmentEntity where parentId=?", parentId);
-        return list != null ? list : new ArrayList<DepartmentEntity>();
+    public List<DepartEntity> getMajorListByParentId(int parentId) {
+        List<DepartEntity> list = findByHQL("from DepartEntity where parentId=?", parentId);
+        return list != null ? list : new ArrayList<DepartEntity>();
     }
 
     /**
      * 获得所有的学院和专业
      */
-    public List<DepartmentEntity> getDepartList() {
-        return findByHQL("from DepartmentEntity");
+    public List<DepartEntity> getDepartList() {
+        return findByHQL("from DepartEntity");
     }
 }
