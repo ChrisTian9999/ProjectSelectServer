@@ -1,9 +1,11 @@
 package com.chris.pss.controller;
 
 import com.chris.pss.dao.DepartDao;
+import com.chris.pss.dao.ProjectDao;
 import com.chris.pss.dao.StudentDao;
 import com.chris.pss.entity.BaseResponse;
 import com.chris.pss.entity.DepartEntity;
+import com.chris.pss.entity.ProjectEntity;
 import com.chris.pss.entity.StudentEntity;
 import com.chris.pss.utils.Const;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,21 @@ import java.util.Map;
 @RequestMapping("/student")
 public class StudentController {
 
-    @RequestMapping("/sno/{sno}")
+    @RequestMapping("/login")
+    @ResponseBody
+    public BaseResponse<StudentEntity> login(@RequestParam("sno") String sno, @RequestParam("pwd") String pwd) {
+        StudentEntity student = new StudentDao().findStudentBySno(sno);
+        if (student == null) {//账号错误
+            return new BaseResponse<StudentEntity>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_SNO, null);
+        }
+        if (!student.getPwd().equals(pwd)) {//密码错误
+            return new BaseResponse<StudentEntity>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_PWD, null);
+        }
+        student.setPwd(null);//保护密码
+        return new BaseResponse<StudentEntity>(student);
+    }
+
+    @RequestMapping("/{sno}")
     @ResponseBody
     public BaseResponse<StudentEntity> getStuBySno(@PathVariable("sno") String sno) {
         StudentEntity student = new StudentDao().findStudentBySno(sno);
@@ -33,51 +49,17 @@ public class StudentController {
                 , null);
     }
 
-
-//    @RequestMapping("/login")
-//    @ResponseBody
-//    public BaseResponse<Map> login(@RequestParam("sno") String sno, @RequestParam("pwd") String pwd) {
-//        StudentEntity student = new StudentDao().findStudentBySno(sno);
-//        if (student == null) {//账号错误
-//            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_SNO, null);
-//        }
-//        if (!student.getPwd().equals(pwd)) {//密码错误
-//            return new BaseResponse<Map>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_PWD, null);
-//        }
-//        student.setPwd(null);//保护密码
-//
-//        DepartEntity depart = new DepartDao().findById(student.getDepartmentId());
-//        if (depart == null) {
-//            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_DEPART, null);
-//        }
-//        List<DepartEntity> departList = new DepartDao().getDepartList();
-//        //
-//        Map<String, Object> map = new HashMap<String, Object>();
-//        map.put("stud", student);
-//        map.put("major", depart);
-//        map.put("proj", null);
-//        map.put("extras", departList);
-//        return new BaseResponse<Map>(map);
-//    }
-
-
-    @RequestMapping("/id/{id}")
+    @RequestMapping("/{sno}/project")
     @ResponseBody
-    public BaseResponse<StudentEntity> getStuById(@PathVariable("id") int id) {
-        StudentEntity student = new StudentDao().findById(id);
-        if (student != null) {
-            student.setPwd(null);//保护密码
-            return new BaseResponse<StudentEntity>(student);
-        }
-        return new BaseResponse<StudentEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_STUDENT, null);
+    public BaseResponse<ProjectEntity> getProjectBySno(@PathVariable("sno") String sno) {
+        ProjectEntity project = new ProjectDao().getProjectByStudentSno(sno);
+        return new BaseResponse<ProjectEntity>(project);
     }
 
-
-    @RequestMapping(value = "/online/count", method = RequestMethod.GET)
+    @RequestMapping("/online/count")
     @ResponseBody
-    public BaseResponse<Map> getStuBySno(@RequestParam(value = "duration", required = false) Long duration) {
-        Long dur = duration == null ? (10 * 1000) : duration;
-        Long count = new StudentDao().findLatestHeartBeatCount(dur);
+    public BaseResponse<Map> getOnline(@RequestParam(value = "duration", required = false) Long duration) {
+        Long count = new StudentDao().findLatestHeartBeatCount(duration);
         //
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("count", count);
@@ -86,13 +68,12 @@ public class StudentController {
 
     @RequestMapping("/online")
     @ResponseBody
-    public BaseResponse<Map> getStuBySno(@RequestParam("sno") String sno, @RequestParam(value = "duration", required = false) Long duration) {
-        Long dur = duration == null ? (10 * 1000) : duration;
+    public BaseResponse<Map> postOnline(@RequestParam("sno") String sno, @RequestParam(value = "duration", required = false) Long duration) {
         boolean refreshOk = new StudentDao().refreshHeartBeatTime(sno);
         if (!refreshOk) {
             return new BaseResponse<Map>(Const.ERROR_SERVER, Const.ERROR_SERVER_MSG, null);
         }
-        Long count = new StudentDao().findLatestHeartBeatCount(dur);
+        Long count = new StudentDao().findLatestHeartBeatCount(duration);
         //
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("count", count);

@@ -33,7 +33,9 @@ public class StudentDao extends BaseDao<StudentEntity> {
     /**
      * 获得duration间隔内的时间数
      */
-    public Long findLatestHeartBeatCount(long duration) {
+    public Long findLatestHeartBeatCount(Long duration) {
+        long def = 10 * 1000;//10s
+        duration = (duration == null || duration < 0) ? def : duration;
         long millis = System.currentTimeMillis();
         return (Long) HibernateUtil.getSession()
                 .createQuery("select count(*) from StudentEntity  where heartBeat>" + (millis - duration))

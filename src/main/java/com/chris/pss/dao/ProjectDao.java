@@ -1,6 +1,7 @@
 package com.chris.pss.dao;
 
 import com.chris.pss.entity.ProjectEntity;
+import com.chris.pss.utils.EmptyUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -17,7 +18,7 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
         try {
             session = this.getSession();
             tx = session.beginTransaction();
-            String hql = "insert into t_project values('%d','%d',NULL ,'%s','%s','%d','0','0')";
+            String hql = "INSERT INTO t_project VALUES ('%d','%d',NULL ,'%s','%s','%d','0','0')";
             hql = String.format(hql, majorId, teacherId, title, detail, ranking);
             session.createSQLQuery(hql).executeUpdate();
             tx.commit();
@@ -37,7 +38,11 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
     }
 
     public List<ProjectEntity> getProjectListByTno(String tno) {
-        return findByHQL("from ProjectEntity p where p.teacher.tno=? order by p.id desc,p.isChecked desc", tno);
+        return findByHQL("from ProjectEntity p where p.teacher.tno=?", tno);
+    }
+
+    public List<ProjectEntity> getMajorCheckedProjectList(int majorId) {
+        return findByHQL("from ProjectEntity p where p.major.id=? and p.isChecked=1", majorId);
     }
 
 
@@ -61,6 +66,41 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
      */
     public boolean resetCheckState(int projectId, boolean isChecked) {
         return partUpdate(projectId, new String[]{"isChecked"}, (isChecked ? 1 : 0));
+    }
+
+    public ProjectEntity getProjectByStudentSno(String sno) {
+        List<ProjectEntity> list = findByHQL("from ProjectEntity p where p.student!=null and p.student.sno=?", sno);
+        return EmptyUtils.isEmpty(list) ? null : list.get(0);
+    }
+
+    public ProjectEntity getProjectByStudentId(int studentId) {
+        List<ProjectEntity> list = findByHQL("from ProjectEntity p where p.student!=null and p.student.id=?", studentId);
+        return EmptyUtils.isEmpty(list) ? null : list.get(0);
+    }
+
+    public boolean postSelectProject(int projectId, int studentId) {
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = this.getSession();
+            tx = session.beginTransaction();
+            String hql = "UPDATE t_project SET student_id='%d' WHERE id='%d' and student_id IS NULL ";
+            hql = String.format(hql, studentId, projectId);
+            int count = session.createSQLQuery(hql).executeUpdate();
+            tx.commit();
+            return count > 0;
+        } catch (Exception ex) {
+            System.out.println("修改对象出现错误！");
+            ex.printStackTrace();
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return false;
     }
 
 

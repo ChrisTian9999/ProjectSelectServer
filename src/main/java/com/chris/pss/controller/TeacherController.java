@@ -49,18 +49,7 @@ public class TeacherController {
         return new BaseResponse<Map>(map);
     }
 
-    @RequestMapping("/id/{id}")
-    @ResponseBody
-    public BaseResponse<TeacherEntity> getTchById(@PathVariable("id") int id) {
-        TeacherEntity teacher = new TeacherDao().findById(id);
-        if (teacher != null) {
-            teacher.setPwd(null);//密码保护
-            return new BaseResponse<TeacherEntity>(teacher);
-        }
-        return new BaseResponse<TeacherEntity>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_TEACHER, null);
-    }
-
-    @RequestMapping("/tno/{tno}")
+    @RequestMapping("/{tno}")
     @ResponseBody
     public BaseResponse<TeacherEntity> getTchInfoByTno(@PathVariable("tno") String tno) {
         TeacherEntity teacher = new TeacherDao().findTchByTno(tno);
