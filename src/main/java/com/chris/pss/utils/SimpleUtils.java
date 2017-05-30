@@ -1,9 +1,13 @@
 package com.chris.pss.utils;
 
+import com.chris.pss.entity.BaseResponse;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by zht on 2017/5/19.
@@ -16,6 +20,22 @@ public class SimpleUtils {
         return new SimpleDateFormat(DATE_FORMATE).format(new Date(time));
     }
 
+
+    /**
+     * 默认的返回状态的response
+     */
+    public static BaseResponse<Map> generalResponseState(boolean flag) {
+        if (!flag) {
+            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG, null);
+        }
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("flag", true);
+        return new BaseResponse<Map>(map);
+    }
+
+    /**
+     *
+     */
     public static long String2Date(String time) {
         try {
             if (!EmptyUtils.isEmpty(time)) {

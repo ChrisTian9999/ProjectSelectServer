@@ -8,6 +8,7 @@ public class Const {
     public static final String OK_MSG = "OK";
 
     public static final int ERROR_NOT_FOUND = 404;
+    public static final String ERROR_NOT_FOUND_MSG = "找不到资源";
     public static final String ERROR_NOT_FOUND_MSG_DEPARTMENT_ALL = "无学院专业信息";
     public static final String ERROR_NOT_FOUND_MSG_STUDENT = "无此学生";
     public static final String ERROR_NOT_FOUND_MSG_TEACHER = "无此教师";

@@ -33,12 +33,7 @@ public class DepartController {
             return new BaseResponse<Map>(Const.ERROR_TIME_FORMAT, Const.ERROR_TIME_FORMAT_MSG, null);
         }
         boolean flag = new DepartDao().updateById(id, start, end);
-        if (!flag) {
-            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG_MAJOR, null);
-        }
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("flag", true);
-        return new BaseResponse<Map>(map);
+        return SimpleUtils.generalResponseState(flag);
     }
 
     @RequestMapping("/{departId}/list")

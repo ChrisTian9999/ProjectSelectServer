@@ -4,6 +4,7 @@ import com.chris.pss.dao.ProjectDao;
 import com.chris.pss.entity.BaseResponse;
 import com.chris.pss.entity.ProjectEntity;
 import com.chris.pss.utils.Const;
+import com.chris.pss.utils.SimpleUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +29,7 @@ public class ProjectController {
             @RequestParam("detail") String detail,
             @RequestParam("ranking") Integer ranking) {
         boolean flag = new ProjectDao().create(majorId, teacherId, title, detail, ranking);
-        if (flag) {
-            HashMap<String, Boolean> map = new HashMap<String, Boolean>();
-            map.put("flag", true);
-            return new BaseResponse<Map>(map);
-        }
-        return new BaseResponse<Map>(Const.ERROR_SERVER, Const.ERROR_SERVER_MSG, null);
+        return SimpleUtils.generalResponseState(flag);
     }
 
     /**
@@ -65,6 +61,15 @@ public class ProjectController {
             , @RequestParam("isChecked") Boolean isChecked) {
         List<ProjectEntity> list = new ProjectDao().getByCheckState(departId, isChecked);
         return new BaseResponse<List<ProjectEntity>>(list);
+    }
+
+    @RequestMapping("{projectId}/reset_state")
+    @ResponseBody
+    public BaseResponse<Map> postResetCheckState(
+            @PathVariable("projectId") int projectId,
+            @RequestParam("isChecked") Boolean isChecked    ) {
+        boolean flag = new ProjectDao().resetCheckState(projectId, isChecked);
+        return SimpleUtils.generalResponseState(flag);
     }
 
 }

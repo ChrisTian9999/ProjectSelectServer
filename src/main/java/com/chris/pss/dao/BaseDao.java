@@ -119,7 +119,7 @@ public class BaseDao<T> {
         return false;
     }
 
-    public void partUpdate(int id, String[] names, Object... values) {
+    public boolean partUpdate(int id, String[] names, Object... values) {
         Session session = null;
         Transaction tx = null;
         try {
@@ -137,8 +137,9 @@ public class BaseDao<T> {
                 query.setParameter(i, values[i]);
             }
             System.out.println("部分更新：" + hql);
-            query.executeUpdate();
+            int count = query.executeUpdate();
             tx.commit();
+            return count > 0;
         } catch (Exception ex) {
             System.out.println("更新对象部分属性出现错误！");
             ex.printStackTrace();
@@ -150,6 +151,7 @@ public class BaseDao<T> {
                 session.close();
             }
         }
+        return false;
     }
 
     public void delete(int id) {

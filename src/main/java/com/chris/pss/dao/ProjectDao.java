@@ -56,5 +56,12 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
         return findByHQL("from ProjectEntity");
     }
 
+    /**
+     * 设置项目的审核状态
+     */
+    public boolean resetCheckState(int projectId, boolean isChecked) {
+        return partUpdate(projectId, new String[]{"isChecked"}, (isChecked ? 1 : 0));
+    }
+
 
 }
