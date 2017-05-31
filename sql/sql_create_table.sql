@@ -84,11 +84,11 @@ insert into t_teacher values('2', 't004', '王老师', '123456', '1', '教师', '1810
 /*
 *学生表数据
 */
-insert into t_student values('101', '201301', '田同学', '123456', '10101', '1', '18301234501', null);
-insert into t_student values('101', '201302', '方同学', '123456', '10101', '1', '18301234502', null);
-insert into t_student values('101', '201303', '胡同学', '123456', '10201', '0', '18301234503', null);
-insert into t_student values('101', '201304', '贾同学', '123456', '10201', '1', '18301234504', null);
-insert into t_student values('201', '201305', '葛同学', '123456', '20101', '0', '18301234506', null);
+insert into t_student values('101', '201301', '田同学', '123456', '1301', '1', '18301234501', null);
+insert into t_student values('101', '201302', '方同学', '123456', '1301', '1', '18301234502', null);
+insert into t_student values('101', '201303', '胡同学', '123456', '1302', '0', '18301234503', null);
+insert into t_student values('101', '201304', '贾同学', '123456', '1302', '1', '18301234504', null);
+insert into t_student values('201', '201305', '葛同学', '123456', '1301', '0', '18301234506', null);
 
 
 
