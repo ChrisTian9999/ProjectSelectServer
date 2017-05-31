@@ -62,19 +62,21 @@ is_finish int default 0
 系别专业表数据
 */
 insert into t_depart values('1', null, '电子与信息工程学院', null, null);
-insert into t_depart values('2', null, '材料与化工学院', null,  null);
+insert into t_depart values('2', null, '法学院', null,  null);
 insert into t_depart values('101', '1', '计算机科学与技术', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
-insert into t_depart values('102', '1', '网络工程', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
-insert into t_depart values('201', '2', '应用化学', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
+insert into t_depart values('102', '1', '通信工程', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
+insert into t_depart values('103', '1', '电子信息工程', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
+insert into t_depart values('104', '1', '网络工程', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
+insert into t_depart values('201', '2', '法学', '2017-01-01 00:00:00', '2017-01-01 00:00:01');
 
 
 /*
 *教师表数据
 */
-insert into t_teacher values('1', 't001', '赵老师', '123456', '1', '老师', '18100000001', 'zhao@163.com', '0');
-insert into t_teacher values('1', 't002', '钱老师', '123456', '1', '副教授', '18100000002', 'qian@163.com', '1');
-insert into t_teacher values('1', 't003', '孙老师', '123456', '1', '教授', '18100000003', 'sun@163.com', '0');
-insert into t_teacher values('2', 't004', '李老师', '123456', '1', '老师', '18100000004', 'li@163.com', '1');
+insert into t_teacher values('1', 't001', '周老师', '123456', '1', '教授', '18100000001', 'zhou@163.com', '1');
+insert into t_teacher values('1', 't002', '吴老师', '123456', '1', '副教授', '18100000002', 'wu@163.com', '0');
+insert into t_teacher values('1', 't003', '郑老师', '123456', '1', '教师', '18100000003', 'zheng@163.com', '0');
+insert into t_teacher values('2', 't004', '王老师', '123456', '1', '教师', '18100000004', 'wang@163.com', '1');
 
 
 
@@ -82,12 +84,11 @@ insert into t_teacher values('2', 't004', '李老师', '123456', '1', '老师', '1810
 /*
 *学生表数据
 */
-insert into t_student values('101', '201301', '方同学', '123456', '10101', '1', '18301234501', null);
-insert into t_student values('101', '201302', '田同学', '123456', '10101', '1', '18301234502', null);
-insert into t_student values('102', '201303', '胡同学', '123456', '10201', '0', '18301234503', null);
-insert into t_student values('102', '201304', '贾同学', '123456', '10201', '1', '18301234504', null);
-insert into t_student values('201', '201305', '王同学', '123456', '20101', '1', '18301234505', null);
-insert into t_student values('201', '201306', '葛同学', '123456', '20101', '0', '18301234506', null);
+insert into t_student values('101', '201301', '田同学', '123456', '10101', '1', '18301234501', null);
+insert into t_student values('101', '201302', '方同学', '123456', '10101', '1', '18301234502', null);
+insert into t_student values('101', '201303', '胡同学', '123456', '10201', '0', '18301234503', null);
+insert into t_student values('101', '201304', '贾同学', '123456', '10201', '1', '18301234504', null);
+insert into t_student values('201', '201305', '葛同学', '123456', '20101', '0', '18301234506', null);
 
 
 
