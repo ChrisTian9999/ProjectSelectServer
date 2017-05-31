@@ -90,7 +90,7 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
             tx.commit();
             return count > 0;
         } catch (Exception ex) {
-            System.out.println("修改对象出现错误！");
+            System.out.println("选题出现错误！");
             ex.printStackTrace();
             if (tx != null) {
                 tx.rollback();
@@ -103,5 +103,30 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
         return false;
     }
 
+
+    public boolean removeSelection(int projectId) {
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = this.getSession();
+            tx = session.beginTransaction();
+            String hql = "UPDATE t_project SET student_id=NULL WHERE id='%d'";
+            hql = String.format(hql, projectId);
+            int count = session.createSQLQuery(hql).executeUpdate();
+            tx.commit();
+            return count > 0;
+        } catch (Exception ex) {
+            System.out.println("移除选题出现错误！");
+            ex.printStackTrace();
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return false;
+    }
 
 }

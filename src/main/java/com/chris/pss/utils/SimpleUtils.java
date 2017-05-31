@@ -26,7 +26,7 @@ public class SimpleUtils {
      */
     public static BaseResponse<Map> generalResponseState(boolean flag) {
         if (!flag) {
-            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, Const.ERROR_NOT_FOUND_MSG, null);
+            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, "失败", null);
         }
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("flag", true);

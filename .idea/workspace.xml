@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5e3c0e6b-451b-4f40-8025-5a89228e4cf6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/pss/controller/StudentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/pss/controller/StudentController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/pss/dao/ProjectDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/pss/dao/ProjectDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/pss/utils/SimpleUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/pss/utils/SimpleUtils.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -94,51 +96,40 @@
       <file leaf-file-name="ProjectController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/controller/ProjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="87" column="79" lean-forward="false" selection-start-line="87" selection-start-column="79" selection-end-line="87" selection-end-column="79" />
+            <state relative-caret-position="63">
+              <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectDao.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/dao/ProjectDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="75" column="19" lean-forward="false" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1496252847307" expanded="true" signature="572:641" ph="INSERT INTO t_project... " />
-                <marker date="1496252847307" expanded="true" signature="578:602" ph="insert into ProjectEntity... " />
-                <marker date="1496252847307" expanded="true" signature="578:641" ph="insert into ProjectEntity... " />
-                <marker date="1496252847307" expanded="true" signature="3065:3115" ph="UPDATE TABLE... " />
-                <marker date="1496252847307" expanded="true" signature="3065:3138" ph="UPDATE TABLE... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/dao/StudentDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1025">
-              <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/controller/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+            <state relative-caret-position="144">
+              <caret line="59" column="45" lean-forward="false" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="45" />
               <folding>
-                <element signature="e#2408#2424#0" expanded="true" />
-                <element signature="e#3036#3052#0" expanded="true" />
-                <element signature="e#3651#3667#0" expanded="true" />
+                <element signature="e#2925#2941#0" expanded="true" />
+                <element signature="e#3553#3569#0" expanded="true" />
+                <element signature="e#4168#4184#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProjectDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/dao/ProjectDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-499">
+              <caret line="92" column="34" lean-forward="false" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1496259678159" expanded="true" signature="572:641" ph="INSERT INTO t_project... " />
+                <marker date="1496259678159" expanded="true" signature="578:602" ph="insert into ProjectEntity... " />
+                <marker date="1496259678159" expanded="true" signature="578:641" ph="insert into ProjectEntity... " />
+                <marker date="1496259678159" expanded="true" signature="3065:3115" ph="UPDATE TABLE... " />
+                <marker date="1496259678159" expanded="true" signature="3065:3138" ph="UPDATE TABLE... " />
+                <marker date="1496259678159" expanded="true" signature="3894:3944" ph="UPDATE t_pro... " />
               </folding>
             </state>
           </provider>
@@ -226,16 +217,16 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/dao/BaseDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/utils/SimpleUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/controller/DepartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/utils/Const.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/entity/ProjectEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/controller/ProjectController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/controller/StudentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/controller/TeacherController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/dao/TeacherDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/dao/StudentDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/dao/ProjectDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/utils/SimpleUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chris/pss/controller/StudentController.java" />
       </list>
     </option>
   </component>
@@ -1358,7 +1349,7 @@
       <workItem from="1496038085213" duration="9562000" />
       <workItem from="1496060837115" duration="19241000" />
       <workItem from="1496117804291" duration="33296000" />
-      <workItem from="1496245039191" duration="2585000" />
+      <workItem from="1496245039191" duration="5472000" />
     </task>
     <task id="LOCAL-00001" summary="支持修改专业时间">
       <created>1495134527188</created>
@@ -1479,7 +1470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496249590019</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="选题列表，增加按照id倒序">
+      <created>1496252917795</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1496252917796</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1500,7 +1498,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177275000" />
+    <option name="totallyTimeSpent" value="180162000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1529,17 +1527,17 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3246154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21230769" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923076" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31846154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31846154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26904762" sideWeight="0.17763157" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19285715" sideWeight="0.82236844" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2595238" sideWeight="0.82236844" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5106383" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1614,11 +1612,12 @@
     <MESSAGE value="支持学生选题，不在选题时间段内会报错，课题已选报错，人有课题报错" />
     <MESSAGE value="增加修改密码的接口" />
     <MESSAGE value="修改bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改bug" />
+    <MESSAGE value="选题列表，增加按照id倒序" />
+    <option name="LAST_COMMIT_MESSAGE" value="选题列表，增加按照id倒序" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="30" />
+      <option name="time" value="32" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1783,6 +1782,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1829,13 +1829,6 @@
         <state relative-caret-position="-135">
           <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Softwares/Maven-3.5.0/.m2/repository/org/springframework/spring-web/4.3.1.RELEASE/spring-web-4.3.1.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1887,14 +1880,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/utils/SimpleUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="32" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/controller/TeacherController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="515">
@@ -1913,36 +1898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/dao/StudentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/controller/StudentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="e#2408#2424#0" expanded="true" />
-            <element signature="e#3036#3052#0" expanded="true" />
-            <element signature="e#3651#3667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/controller/ProjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="87" column="79" lean-forward="false" selection-start-line="87" selection-start-column="79" selection-end-line="87" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/entity/ProjectEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -1951,17 +1906,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/dao/StudentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/controller/ProjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Softwares/Maven-3.5.0/.m2/repository/org/springframework/spring-web/4.3.1.RELEASE/spring-web-4.3.1.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/dao/ProjectDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="75" column="19" lean-forward="false" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+        <state relative-caret-position="-499">
+          <caret line="92" column="34" lean-forward="false" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1496252847307" expanded="true" signature="572:641" ph="INSERT INTO t_project... " />
-            <marker date="1496252847307" expanded="true" signature="578:602" ph="insert into ProjectEntity... " />
-            <marker date="1496252847307" expanded="true" signature="578:641" ph="insert into ProjectEntity... " />
-            <marker date="1496252847307" expanded="true" signature="3065:3115" ph="UPDATE TABLE... " />
-            <marker date="1496252847307" expanded="true" signature="3065:3138" ph="UPDATE TABLE... " />
+            <marker date="1496259678159" expanded="true" signature="572:641" ph="INSERT INTO t_project... " />
+            <marker date="1496259678159" expanded="true" signature="578:602" ph="insert into ProjectEntity... " />
+            <marker date="1496259678159" expanded="true" signature="578:641" ph="insert into ProjectEntity... " />
+            <marker date="1496259678159" expanded="true" signature="3065:3115" ph="UPDATE TABLE... " />
+            <marker date="1496259678159" expanded="true" signature="3065:3138" ph="UPDATE TABLE... " />
+            <marker date="1496259678159" expanded="true" signature="3894:3944" ph="UPDATE t_pro... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/utils/SimpleUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/pss/controller/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="59" column="45" lean-forward="false" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="45" />
+          <folding>
+            <element signature="e#2925#2941#0" expanded="true" />
+            <element signature="e#3553#3569#0" expanded="true" />
+            <element signature="e#4168#4184#0" expanded="true" />
           </folding>
         </state>
       </provider>

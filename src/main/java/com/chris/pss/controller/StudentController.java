@@ -57,6 +57,18 @@ public class StudentController {
         return new BaseResponse<ProjectEntity>(project);
     }
 
+    @RequestMapping("/{sno}/remove_my_project")
+    @ResponseBody
+    public BaseResponse<Map> removeProject(@PathVariable("sno") String sno) {
+        ProjectDao projectDao = new ProjectDao();
+        ProjectEntity project = projectDao.getProjectByStudentSno(sno);
+        if (project == null) {
+            return new BaseResponse<Map>(Const.ERROR_NOT_FOUND, "当前无选题", null);
+        }
+        boolean flag = projectDao.removeSelection(project.getId());
+        return SimpleUtils.generalResponseState(flag);
+    }
+
     @RequestMapping("/online/count")
     @ResponseBody
     public BaseResponse<Map> getOnline(@RequestParam(value = "duration", required = false) Long duration) {
