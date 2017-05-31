@@ -8,6 +8,7 @@ import com.chris.pss.entity.DepartEntity;
 import com.chris.pss.entity.ProjectEntity;
 import com.chris.pss.entity.StudentEntity;
 import com.chris.pss.utils.Const;
+import com.chris.pss.utils.SimpleUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,6 +78,20 @@ public class StudentController {
         //
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("count", count);
+        return new BaseResponse<Map>(map);
+    }
+
+    @RequestMapping("{sno}/reset_pwd")
+    @ResponseBody
+    public BaseResponse<Map> postResetPwd(@PathVariable("sno") String sno,
+                                          @RequestParam("pwd") String pwd,
+                                          @RequestParam("newPwd") String newPwd) {
+        boolean flag = new StudentDao().resetPwd(sno, pwd, newPwd);
+        if (!flag) {
+            return new BaseResponse<Map>(Const.ERROR_SERVER, "更改密码失败", null);
+        }
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("flag", true);
         return new BaseResponse<Map>(map);
     }
 }

@@ -1,6 +1,8 @@
 package com.chris.pss.controller;
 
 import com.chris.pss.dao.DepartDao;
+import com.chris.pss.dao.ProjectDao;
+import com.chris.pss.dao.StudentDao;
 import com.chris.pss.dao.TeacherDao;
 import com.chris.pss.entity.BaseResponse;
 import com.chris.pss.entity.DepartEntity;
@@ -60,4 +62,18 @@ public class TeacherController {
         return new BaseResponse<TeacherEntity>(Const.ERROR_LOGIN, Const.ERROR_LOGIN_TNO, null);
     }
 
+
+    @RequestMapping("{tno}/reset_pwd")
+    @ResponseBody
+    public BaseResponse<Map> postResetPwd(@PathVariable("tno") String tno,
+                                          @RequestParam("pwd") String pwd,
+                                          @RequestParam("newPwd") String newPwd) {
+        boolean flag = new TeacherDao().resetPwd(tno, pwd, newPwd);
+        if (!flag) {
+            return new BaseResponse<Map>(Const.ERROR_SERVER, "更改密码失败", null);
+        }
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("flag", true);
+        return new BaseResponse<Map>(map);
+    }
 }

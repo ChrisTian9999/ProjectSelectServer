@@ -46,6 +46,9 @@ public class ProjectController {
         return new BaseResponse<List<ProjectEntity>>(list);
     }
 
+    /**
+     * 获得教师所有的课题的列表
+     */
     @RequestMapping("/teacher/{tno}/list")
     @ResponseBody
     public BaseResponse<List<ProjectEntity>> getProjectListByTno(@PathVariable("tno") String tno) {

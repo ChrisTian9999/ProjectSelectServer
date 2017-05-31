@@ -13,5 +13,11 @@ public class TeacherDao extends BaseDao<TeacherEntity> {
         List<TeacherEntity> list = findByHQL("from TeacherEntity where tno=?", tno);
         return EmptyUtils.isEmpty(list) ? null : list.get(0);
     }
-    
+
+    /**
+     * 重置密码
+     */
+    public boolean resetPwd(String tno, String pwd, String newPwd) {
+        return update(new String[]{"pwd"}, new String[]{newPwd}, new String[]{"tno=" + tno, "pwd=" + pwd});
+    }
 }

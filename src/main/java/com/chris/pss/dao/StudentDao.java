@@ -41,4 +41,12 @@ public class StudentDao extends BaseDao<StudentEntity> {
                 .createQuery("select count(*) from StudentEntity  where heartBeat>" + (millis - duration))
                 .uniqueResult();
     }
+
+    /**
+     * 重置密码
+     */
+    public boolean resetPwd(String sno, String pwd, String newPwd) {
+        return update(new String[]{"pwd"}, new String[]{newPwd}, new String[]{"sno=" + sno, "pwd=" + pwd});
+    }
+
 }
