@@ -18,6 +18,11 @@ public class TeacherDao extends BaseDao<TeacherEntity> {
      * 重置密码
      */
     public boolean resetPwd(String tno, String pwd, String newPwd) {
-        return update(new String[]{"pwd"}, new String[]{newPwd}, new String[]{"tno=" + tno, "pwd=" + pwd});
+        return update(new String[]{"pwd"}, new String[]{newPwd}
+                , new String[]{
+                        String.format("tno='%s'", tno)
+                        , String.format("pwd='%s'", pwd)
+                }
+        );
     }
 }

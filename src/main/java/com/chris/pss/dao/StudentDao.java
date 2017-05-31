@@ -46,7 +46,12 @@ public class StudentDao extends BaseDao<StudentEntity> {
      * 重置密码
      */
     public boolean resetPwd(String sno, String pwd, String newPwd) {
-        return update(new String[]{"pwd"}, new String[]{newPwd}, new String[]{"sno=" + sno, "pwd=" + pwd});
+        return update(new String[]{"pwd"}, new String[]{newPwd}
+                , new String[]{
+                        String.format("sno='%s'", sno)
+                        , String.format("pwd='%s'", pwd)
+                }
+        );
     }
 
 }
