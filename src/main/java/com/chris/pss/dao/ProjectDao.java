@@ -38,11 +38,11 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
     }
 
     public List<ProjectEntity> getProjectListByTno(String tno) {
-        return findByHQL("from ProjectEntity p where p.teacher.tno=?", tno);
+        return findByHQL("from ProjectEntity p where p.teacher.tno=? order by p.id desc", tno);
     }
 
     public List<ProjectEntity> getMajorCheckedProjectList(int majorId) {
-        return findByHQL("from ProjectEntity p where p.major.id=? and p.isChecked=1", majorId);
+        return findByHQL("from ProjectEntity p where p.major.id=? and p.isChecked=1 order by p.id desc", majorId);
     }
 
 
@@ -53,12 +53,12 @@ public class ProjectDao extends BaseDao<ProjectEntity> {
      * @param isChecked 状态，是否通过审核
      */
     public List<ProjectEntity> getByCheckState(int departId, boolean isChecked) {
-        return isChecked ? findByHQL("from ProjectEntity p where p.major.parent.id=? and p.isChecked=1 order by p.teacher.id asc", departId)
-                : findByHQL("from ProjectEntity p where p.major.parent.id=? and p.isChecked!=1 order by p.teacher.id asc", departId);
+        return isChecked ? findByHQL("from ProjectEntity p where p.major.parent.id=? and p.isChecked=1 order by p.id desc", departId)
+                : findByHQL("from ProjectEntity p where p.major.parent.id=? and p.isChecked!=1 order by p.id desc", departId);
     }
 
     public List<ProjectEntity> getAll() {
-        return findByHQL("from ProjectEntity");
+        return findByHQL("from ProjectEntity order by p.id desc");
     }
 
     /**
