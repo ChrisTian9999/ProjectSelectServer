@@ -60,6 +60,19 @@ public class StudentController {
     @RequestMapping("/{sno}/remove_my_project")
     @ResponseBody
     public BaseResponse<Map> removeProject(@PathVariable("sno") String sno) {
+        //首先需要检测是否在选择时间内
+        StudentEntity studentBySno = new StudentDao().findStudentBySno(sno);
+        DepartEntity major = studentBySno.getMajor();
+        long time = System.currentTimeMillis();
+        long st = SimpleUtils.String2Date(major.getTimeBegin());
+        long en = SimpleUtils.String2Date(major.getTimeEnd());
+        if (st <= 0 || en <= 0 || st > en//错误数据
+                || time < st) {
+            return new BaseResponse<Map>(Const.ERROR_SERVER, "选题未开始", null);
+        } else if (time >= en) {
+            return new BaseResponse<Map>(Const.ERROR_SERVER, "选题已结束", null);
+        }
+
         ProjectDao projectDao = new ProjectDao();
         ProjectEntity project = projectDao.getProjectByStudentSno(sno);
         if (project == null) {
